@@ -3,6 +3,7 @@ help:
 	@echo "  build                      - Build the Docker container"
 	@echo "  build-no-cache             - Build the Docker container without cache"
 	@echo "  start                      - Start the Docker containers"
+	@echo "  start-detached             - Start the Docker containers in detached mode"
 	@echo "  stop-backend               - Stop the backend container"
 	@echo "  start-dev-backend          - Start the database, and backend in development mode"
 	@echo "  stop                       - Stop the Docker containers"
@@ -23,6 +24,10 @@ build-no-cache:
 start:
 	@echo "Starting Docker container..."
 	docker compose up
+
+start-detached:
+	@echo "Starting Docker container..."
+	docker compose up -d
 
 stop-backend:
 	@echo "Stopping Backend container..."
