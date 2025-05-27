@@ -10,11 +10,10 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-db}
     networks:
       - app-network
-  backend:
+  app:
     ports:
       - 8000:8000
     build:
-      context: ./backend
       dockerfile: ./Dockerfile
     environment:
       - DB_HOST=${POSTGRES_HOST:-db}
@@ -23,7 +22,8 @@ services:
       - DB_PASSWORD=${POSTGRES_PASSWORD:-qwerty}
       - DB_NAME=${POSTGRES_DB:-db}
     volumes:
-      - ./backend:/app
+      - ./src/:/app/src/
+      - ./pyproject.toml:/app/pyproject.toml
     depends_on:
       - db
     networks:
